@@ -1,12 +1,15 @@
-import { createPathAsync, removePathAsync }   from "@surface/io";
-import path                                   from "path";
-import { fileURLToPath }                      from "url";
+import { createPathAsync, removePathAsync }             from "@surface/io";
+import path                                             from "path";
+import { fileURLToPath }                                from "url";
 import { copyFile, readdir, stat, writeFile, readFile } from "node:fs/promises";
-import { existsSync,  }                         from "fs";
+import { existsSync,  }                                 from "fs";
+import chalk                                            from "chalk";
 
-const dirname     = path.dirname(fileURLToPath(import.meta.url));
-const source      = path.resolve(dirname, "../templates");
-const destination = path.resolve(dirname, "../../workbench/modules/packages/@surface/cli/internal/teplates");
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const source  = path.resolve(dirname, "../templates");
+
+const darkGreen = chalk.rgb(0, 128, 0);
+const green     = chalk.rgb(0, 255, 0);
 
 export default class Tasks
 {
@@ -33,8 +36,10 @@ export default class Tasks
         }
     }
 
-    public static async generateTemplates(): Promise<void>
+    public static async generateTemplates(output: string): Promise<void>
     {
+        const destination = path.isAbsolute(output) ? output : path.resolve(process.cwd(), output);
+
         const templateMap = new Map<string, Set<string>>();
         const conflicts   = new Set<string>();
         const allFiles    = new Map<string, Set<string>>();
@@ -101,7 +106,7 @@ export default class Tasks
 
                     const filename  = path.join(source, name, file);
 
-                    console.log(`${filename} => ${template}`);
+                    console.log(`${darkGreen(filename)} => ${green(template)}`);
 
                     await copyFile(filename, template);
                 }
@@ -112,5 +117,3 @@ export default class Tasks
         await writeFile(path.join(destination, "filemap.json"), JSON.stringify(Object.fromEntries(filemap), null, 4));
     }
 }
-
-await Tasks.generateTemplates();

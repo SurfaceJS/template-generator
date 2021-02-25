@@ -3,6 +3,7 @@
   "dependencies": {
     "@surface/io": "latest",
     "@types/node": "14.14.31",
+    "chalk": "4.1.0",
     "commander": "7.1.0"
   },
   "license": "ISC",

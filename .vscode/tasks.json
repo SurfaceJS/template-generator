@@ -18,6 +18,16 @@
                 ]
             },
             "type": "shell"
-        }
+        },
+        {
+            "command": "node cli generate ../../workbench/modules/packages/@surface/cli/internal/teplates",
+            "isBackground": true,
+            "label": "Generate templates",
+            "options": {
+                "cwd": "${workspaceFolder}/tasks"
+            },
+            "problemMatcher": [],
+            "type": "shell"
+        },
 	]
 }
