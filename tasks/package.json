@@ -1,17 +1,23 @@
 {
-  "author": "HitalloExiled",
-  "dependencies": {
-    "@surface/io": "latest",
-    "@types/node": "14.14.31",
-    "chalk": "4.1.0",
-    "commander": "7.1.0"
-  },
-  "license": "ISC",
-  "main": "index.js",
-  "name": "tasks",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "type": "module",
-  "version": "1.0.0"
+    "author": "HitalloExiled",
+    "devDependencies": {
+        "@surface/io": "latest",
+        "@surface/mock": "../../workbench/modules/packages/@surface/mock",
+        "@surface/mock-loader": "../../workbench/modules/packages/@surface/mock-loader",
+        "@surface/test-suite": "../../workbench/modules/packages/@surface/test-suite",
+        "@types/chai": "4.2.15",
+        "@types/node": "14.14.31",
+        "chai": "4.3.0",
+        "chalk": "4.1.0",
+        "commander": "7.1.0",
+        "mocha": "8.3.0"
+    },
+    "license": "ISC",
+    "main": "index.js",
+    "name": "tasks",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "type": "module",
+    "version": "1.0.0"
 }

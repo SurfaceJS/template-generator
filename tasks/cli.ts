@@ -1,5 +1,5 @@
 import commander from "commander";
-import Tasks from "./index.js";
+import Tasks from "./internal/index.js";
 
 const program = new commander.Command();
 

@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../workbench/modules/packages/@surface/compiler/schema.json",
+    "$schema": "./node_modules/@surface/compiler/schema.json",
     "entry": "./source/index.ts",
     "htmlTemplate": "./template.html"
 }

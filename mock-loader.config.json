@@ -1,0 +1,6 @@
+{
+    "modules":
+    [
+        "./tasks/internal/compare.js"
+    ]
+}
