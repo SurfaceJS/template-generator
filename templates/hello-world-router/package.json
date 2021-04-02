@@ -13,7 +13,7 @@
         "eslint-plugin-import": "2.22.1",
         "typescript": "4.2.3"
     },
-    "name": "surface-simple-router-app",
+    "name": "app",
     "scripts": {
         "build": "sfcc build --mode=production",
         "start": "sfcc serve --hot --open",

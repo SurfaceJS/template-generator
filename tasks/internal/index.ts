@@ -1,7 +1,7 @@
 import { createPathAsync, isDirectory, removePathAsync } from "@surface/io";
 import path                                              from "path";
 import { fileURLToPath }                                 from "url";
-import { copyFile, readdir, writeFile }                  from "fs/promises";
+import { copyFile, readdir, readFile, writeFile }        from "fs/promises";
 import { existsSync,  }                                  from "fs";
 import chalk                                             from "chalk";
 import hash                                              from "./hash.js";
@@ -12,7 +12,8 @@ const source  = path.resolve(dirname, "../../templates");
 const darkGreen = chalk.rgb(0, 128, 0);
 const green     = chalk.rgb(0, 255, 0);
 
-type Entry = { name: string, path: string };
+type Entry         = { description: string, files: { name: string, path: string }[] };
+type TemplateIndex = Record<string, Entry>;
 
 export default class Tasks
 {
@@ -43,20 +44,23 @@ export default class Tasks
 
         await removePathAsync(destination);
 
-        const index = { } as Record<string, Entry[]>
+        const index = { } as TemplateIndex
 
         for (const template of await readdir(source))
         {
-            const entry = index[template] = [] as Entry[];
+            const templateFolder = path.join(source, template);
+            const description    = (await readFile(path.join(templateFolder, "README.md"))).toString();
 
-            for await (const [filepath, checksum] of this.iterateFiles(path.join(source, template)))
+            const entry = index[template] = { description, files: [] } as Entry;
+
+            for await (const [filepath, checksum] of this.iterateFiles(templateFolder))
             {
                 const relative = filepath
                     .replace(path.join(source, template), "")
                     .replaceAll("\\", "/")
                     .replace(/^\//, "");
 
-                entry.push({ name: checksum, path: relative })
+                entry.files.push({ name: checksum, path: relative })
 
                 const targetPath = path.join(destination, checksum);
 
