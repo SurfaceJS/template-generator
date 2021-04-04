@@ -1,7 +1,8 @@
-import { DirectiveHandler, ICustomDirective } from "@surface/custom-element";
-import { Delegate }                           from "@surface/core";
+import type { DirectiveDescriptor } from "@surface/custom-element";
+import { Directive }                from "@surface/custom-element";
+import { Delegate }                 from "@surface/core";
 
-export default class KeyPressDirectiveHandler extends DirectiveHandler
+export default class KeyPressDirective extends Directive
 {
     private handler = (event: KeyboardEvent): void =>
     {
@@ -9,9 +10,9 @@ export default class KeyPressDirectiveHandler extends DirectiveHandler
     }
 
     // eslint-disable-next-line @typescript-eslint/ban-types
-    public constructor(scope: object, element: HTMLElement, directive: ICustomDirective)
+    public constructor(scope: object, element: HTMLElement, descriptor: DirectiveDescriptor)
     {
-        super(scope, element, directive);
+        super(scope, element, descriptor);
 
         element.addEventListener("keypress", this.handler);
     }
