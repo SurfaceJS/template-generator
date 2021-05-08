@@ -3,8 +3,8 @@ import WebRouter, { RouteConfiguration, RouterLinkDirective } from "@surface/web
 
 const routes: RouteConfiguration[] =
 [
-    { component: async () => import("./views/world"), name: "home",  path: "/home", },
-    { component: async () => import("./views/hello"), name: "about", path: "/about" },
+    { component: async () => import("./views/hello"), name: "hello", path: "/hello" },
+    { component: async () => import("./views/world"), name: "world", path: "/world" },
 ];
 
 const router = new WebRouter("app-root", routes);
