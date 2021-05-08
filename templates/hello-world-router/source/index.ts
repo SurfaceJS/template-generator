@@ -1,5 +1,5 @@
-import CustomElement                     from "@surface/custom-element";
-import WebRouter, { RouteConfiguration } from "@surface/web-router";
+import CustomElement                                          from "@surface/custom-element";
+import WebRouter, { RouteConfiguration, RouterLinkDirective } from "@surface/web-router";
 
 const routes: RouteConfiguration[] =
 [
@@ -9,6 +9,6 @@ const routes: RouteConfiguration[] =
 
 const router = new WebRouter("app-root", routes);
 
-CustomElement.registerDirective("to", router.asDirective());
+CustomElement.registerDirective("to", context => new RouterLinkDirective(router, context));
 
 void import("./app");

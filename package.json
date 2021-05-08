@@ -2,7 +2,11 @@
     "author": "HitalloExiled",
     "license": "ISC",
     "name": "template-generator",
+    "dependencies": {
+        "rimraf": "^3.0.2"
+    },
     "scripts": {
+        "clean": "rimraf ./templates/*/package-lock.json ./templates/*/node_modules",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "type": "module",
