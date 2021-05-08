@@ -3,7 +3,7 @@
 	"tasks": [
 		{
             "command": "tsc",
-            "label": "TS Compile File",
+            "label": "tsc",
             "options": {
                 "cwd": "${fileDirname}"
             },
