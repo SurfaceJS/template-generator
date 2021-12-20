@@ -1,6 +1,6 @@
 type Item =
 {
-    id:          number; 
+    id:          number;
     complete:    boolean,
     description: string,
 };

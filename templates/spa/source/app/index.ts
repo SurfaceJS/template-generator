@@ -6,16 +6,16 @@ import "../components/app-loading";
 import "../components/app-message-dialog";
 import "../components/app-text-input";
 
-import CustomElement, { element } from "@surface/custom-element";
-import { inject }                 from "@surface/dependency-injection";
-import WebRouter                  from "@surface/web-router";
-import Store                      from "../store";
-import template                   from "./index.html";
-import style                      from "./index.scss";
-import AuthService                from "../services/auth-service";
+import HTMLXElement, { element } from "@surface/htmlx-element";
+import { inject }                from "@surface/dependency-injection";
+import WebRouter                 from "@surface/web-router";
+import Store                     from "../store";
+import template                  from "./index.htmlx";
+import style                     from "./index.scss";
+import AuthService               from "../services/auth-service";
 
-@element("app-root", template, style)
-export default class App extends CustomElement
+@element("app-root", { template, style })
+export default class App extends HTMLXElement
 {
     public constructor
     (

@@ -1,7 +1,7 @@
-import CustomElement, { element } from "@surface/custom-element";
-import template                   from "./index.html";
+import HTMLXElement, { element } from "@surface/htmlx-element";
+import template                   from "./index.htmlx";
 import style                      from "./index.scss";
 
-@element("app-root", template, style)
-export default class App extends CustomElement
+@element("app-root", { style, template })
+export default class App extends HTMLXElement
 { }

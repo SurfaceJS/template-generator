@@ -1,7 +1,7 @@
-import CustomElement, { element } from "@surface/custom-element";
-import template                   from "./index.html";
-import style                      from "./index.scss";
+import HTMLXElement, { element } from "@surface/htmlx-element";
+import template                  from "./index.htmlx";
+import style                     from "./index.scss";
 
-@element("world-view", template, style)
-export default class WorldView extends CustomElement
+@element("world-view", { style, template })
+export default class WorldView extends HTMLXElement
 { }

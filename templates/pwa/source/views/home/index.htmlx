@@ -4,7 +4,7 @@
     <div id="separator"></div>
     <div id="list">
         <table>
-            <tr #for="item of host.items" :item="item">
+            <tr #for="item of host.items">
                 <td>
                     <div><input type="checkbox" ::checked="item.complete" @change="host.save"></div>
                 </td>

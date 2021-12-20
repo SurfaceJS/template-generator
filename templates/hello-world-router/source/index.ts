@@ -1,4 +1,4 @@
-import CustomElement                                          from "@surface/custom-element";
+import HTMLXElement                                           from "@surface/htmlx-element";
 import WebRouter, { RouteConfiguration, RouterLinkDirective } from "@surface/web-router";
 
 const routes: RouteConfiguration[] =
@@ -7,8 +7,8 @@ const routes: RouteConfiguration[] =
     { component: async () => import("./views/world"), name: "world", path: "/world" },
 ];
 
-const router = new WebRouter("app-root", routes);
+const router = new WebRouter({ root: "app-root", routes });
 
-CustomElement.registerDirective("to", context => new RouterLinkDirective(router, context));
+HTMLXElement.registerDirective("to", context => new RouterLinkDirective(router, context));
 
 void import("./app");

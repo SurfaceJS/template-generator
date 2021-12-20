@@ -1,16 +1,16 @@
-import CustomElement, { element }       from "@surface/custom-element";
+import HTMLXElement, { element }        from "@surface/htmlx-element";
 import { inject }                       from "@surface/dependency-injection";
 import WebRouter, { IRouteableElement } from "@surface/web-router";
 import Loading                          from "../../components/app-loading";
 import MessageDialog                    from "../../components/app-message-dialog";
 import Localization                     from "../../locales/localization";
 import AuthService                      from "../../services/auth-service";
-import template                         from "./index.html";
+import template                         from "./index.htmlx";
 import style                            from "./index.scss";
 
-@element("login-view", template, style)
+@element("login-view", { style, template })
 
-export default class Login extends CustomElement implements IRouteableElement
+export default class Login extends HTMLXElement implements IRouteableElement
 {
     public model =
     {
@@ -81,7 +81,7 @@ export default class Login extends CustomElement implements IRouteableElement
             {
                 Loading.close();
 
-                await MessageDialog.show("Error", error.message);
+                await MessageDialog.show("Error", (error as Error).message);
             }
         }
     }

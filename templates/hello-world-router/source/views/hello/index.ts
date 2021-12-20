@@ -1,7 +1,7 @@
-import CustomElement, { element } from "@surface/custom-element";
-import template                   from "./index.html";
-import style                      from "./index.scss";
+import HTMLXElement, { element } from "@surface/htmlx-element";
+import template                  from "./index.htmlx";
+import style                     from "./index.scss";
 
-@element("hello-view", template, style)
-export default class HelloView extends CustomElement
+@element("hello-view", { style, template })
+export default class HelloView extends HTMLXElement
 { }

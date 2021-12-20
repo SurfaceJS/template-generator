@@ -3,7 +3,8 @@
     "license": "ISC",
     "name": "template-generator",
     "dependencies": {
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "typescript": "^4.5.2"
     },
     "scripts": {
         "clean": "rimraf ./templates/*/package-lock.json ./templates/*/node_modules",

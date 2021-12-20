@@ -1,5 +1,4 @@
-import { uuidv4 }                       from "@surface/core";
-import CustomElement, { element }       from "@surface/custom-element";
+import HTMLXElement, { element }        from "@surface/htmlx-element";
 import { inject }                       from "@surface/dependency-injection";
 import WebRouter, { IRouteableElement } from "@surface/web-router";
 import Loading                          from "../../components/app-loading";
@@ -7,12 +6,20 @@ import MessageDialog                    from "../../components/app-message-dialo
 import Localization                     from "../../locales/localization";
 import AuthService                      from "../../services/auth-service";
 import User                             from "../../types/user";
-import template                         from "./index.html";
+import template                         from "./index.htmlx";
 import style                            from "./index.scss";
 
-@element("account-create-view", template, style)
+declare global
+{
+    interface Crypto
+    {
+        randomUUID(): string;
+    }
+}
 
-export default class AccountCreate extends CustomElement implements IRouteableElement
+@element("account-create-view", { style, template })
+
+export default class AccountCreate extends HTMLXElement implements IRouteableElement
 {
     public confirmPassword = "";
 
@@ -26,7 +33,7 @@ export default class AccountCreate extends CustomElement implements IRouteableEl
 
     public model: User =
     {
-        id:       uuidv4(),
+        id:       crypto.randomUUID(),
         email:    "",
         image:    "",
         name:     "",
@@ -115,7 +122,7 @@ export default class AccountCreate extends CustomElement implements IRouteableEl
             {
                 Loading.close();
 
-                await MessageDialog.show("Error", error.message);
+                await MessageDialog.show("Error", (error as Error).message);
             }
         }
     }

@@ -1,17 +1,18 @@
-import CustomElement, { element, paintingDone } from "@surface/custom-element";
-import { inject }                               from "@surface/dependency-injection";
-import WebRouter, { IRouteableElement }         from "@surface/web-router";
-import Loading                                  from "../../components/app-loading/index";
-import MessageDialog                            from "../../components/app-message-dialog";
-import Localization                             from "../../locales/localization";
-import AuthService                              from "../../services/auth-service";
-import User                                     from "../../types/user";
-import template                                 from "./index.html";
-import style                                    from "./index.scss";
+import { painting }                     from "@surface/htmlx";
+import HTMLXElement, { element }        from "@surface/htmlx-element";
+import { inject }                       from "@surface/dependency-injection";
+import WebRouter, { IRouteableElement } from "@surface/web-router";
+import Loading                          from "../../components/app-loading/index";
+import MessageDialog                    from "../../components/app-message-dialog";
+import Localization                     from "../../locales/localization";
+import AuthService                      from "../../services/auth-service";
+import User                             from "../../types/user";
+import template                         from "./index.htmlx";
+import style                            from "./index.scss";
 
-@element("account-edit-view", template, style)
+@element("account-edit-view", { style, template })
 
-export default class AccountEdit extends CustomElement implements IRouteableElement
+export default class AccountEdit extends HTMLXElement implements IRouteableElement
 {
     public errors =
     {
@@ -54,7 +55,7 @@ export default class AccountEdit extends CustomElement implements IRouteableElem
 
         this.user = { ...this.model = (await this.service.getById(this.router.route.parameters.id as string)) as User };
 
-        await paintingDone();
+        await painting();
 
         Loading.close();
     }
@@ -109,7 +110,7 @@ export default class AccountEdit extends CustomElement implements IRouteableElem
             {
                 Loading.close();
 
-                await MessageDialog.show("Error", error.message);
+                await MessageDialog.show("Error", (error as Error).message);
             }
         }
     }

@@ -1,9 +1,9 @@
-import CustomElement, { computed, element, event } from "@surface/custom-element";
-import template                   from "./index.html";
-import style                      from "./index.scss";
+import HTMLXElement, { computed, element, event } from "@surface/htmlx-element";
+import template                                   from "./index.htmlx";
+import style                                      from "./index.scss";
 
-@element("app-input", template, style)
-export default class Input extends CustomElement
+@element("app-input", { template, style })
+export default class Input extends HTMLXElement
 {
     private cache = "";
 

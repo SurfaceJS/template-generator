@@ -7,7 +7,9 @@
             "eslint": {
                 "enabled": false
             },
-            "index": "./template.html"
+            "htmlx": "aot",
+            "index": "./template.html",
+            "target": "web"
         }
     }
 }

@@ -1,9 +1,9 @@
-import CustomElement, { element, query } from "@surface/custom-element";
-import template                          from "./index.html";
-import style                             from "./index.scss";
+import HTMLXElement, { element, query } from "@surface/htmlx-element";
+import template                         from "./index.htmlx";
+import style                            from "./index.scss";
 
-@element("app-image-pick", template, style)
-export default class ImagePick extends CustomElement
+@element("app-image-pick", { template, style })
+export default class ImagePick extends HTMLXElement
 {
     public value = "";
 

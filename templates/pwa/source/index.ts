@@ -1,4 +1,4 @@
-import CustomElement                      from "@surface/custom-element";
+import HTMLXElement                       from "@surface/htmlx-element";
 import Container                          from "@surface/dependency-injection";
 import WebRouter, { RouterLinkDirective } from "@surface/web-router";
 import KeyPressDirective                  from "./directives/key-press-directive";
@@ -20,13 +20,11 @@ container.registerSingleton(Store);
 container.registerSingleton(TodoRepository);
 container.registerSingleton(UserRepository);
 
-const router = new WebRouter("app-root", routes, { container, interceptors: [AuthRouterInterceptor] });
+const router = new WebRouter({ root: "app-root", routes, container, interceptors: [AuthRouterInterceptor] });
 
-CustomElement.registerDirective("to", context => new RouterLinkDirective(router, context));
-CustomElement.registerDirective("keypress", KeyPressDirective);
+HTMLXElement.registerDirective("to", context => new RouterLinkDirective(router, context));
+HTMLXElement.registerDirective("keypress", KeyPressDirective);
 
 void import("./app")
     .then(x => document.body.appendChild(container.inject(x.default)))
     .then(() => void router.pushCurrentLocation());
-
-window.addEventListener('load', () => navigator.serviceWorker?.register('/service-worker.js'));

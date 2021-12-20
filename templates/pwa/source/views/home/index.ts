@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import CustomElement, { element, query, paintingDone } from "@surface/custom-element";
-import { inject }                                      from "@surface/dependency-injection";
-import Enumerable                                      from "@surface/enumerable";
-import { IRouteableElement }                           from "@surface/web-router";
-import Loading                                         from "../../components/app-loading";
-import Localization                                    from "../../locales/localization";
-import TodoRepository                                  from "../../repositories/todo-repository";
-import Store                                           from "../../store";
-import type Item                                       from "../../types/item";
-import Todo                                            from "../../types/todo";
-import template                                        from "./index.html";
-import style                                           from "./index.scss";
+import { painting }                     from "@surface/htmlx";
+import HTMLXElement, { element, query } from "@surface/htmlx-element";
+import { inject }                       from "@surface/dependency-injection";
+import Enumerable                       from "@surface/enumerable";
+import { IRouteableElement }            from "@surface/web-router";
+import Loading                          from "../../components/app-loading";
+import Localization                     from "../../locales/localization";
+import TodoRepository                   from "../../repositories/todo-repository";
+import Store                            from "../../store";
+import type Item                        from "../../types/item";
+import Todo                             from "../../types/todo";
+import template                         from "./index.htmlx";
+import style                            from "./index.scss";
 
-@element("home-view", template, style)
+@element("home-view", { style, template })
 
-export default class HomeView extends CustomElement implements IRouteableElement
+export default class HomeView extends HTMLXElement implements IRouteableElement
 {
     @query("#list")
     private readonly listElement!: HTMLDivElement;
@@ -51,7 +52,7 @@ export default class HomeView extends CustomElement implements IRouteableElement
 
         this.items = (this.todo = todo).items;
 
-        await paintingDone();
+        await painting();
 
         Loading.close();
     }
@@ -62,7 +63,7 @@ export default class HomeView extends CustomElement implements IRouteableElement
 
         this.task = "";
 
-        await paintingDone();
+        await painting();
 
         this.listElement.scrollTop = this.listElement.scrollHeight;
 
@@ -78,7 +79,7 @@ export default class HomeView extends CustomElement implements IRouteableElement
 
     public async save(): Promise<void>
     {
-        await paintingDone();
+        await painting();
 
         this.todo.items = this.items;
 

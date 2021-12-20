@@ -1,11 +1,11 @@
-import "./font-face.scss?global";
+import "./font-face.scss?style";
 
-import CustomElement, { attribute, element } from "@surface/custom-element";
-import template                              from "./index.html";
-import style                                 from "./index.scss";
+import HTMLXElement, { attribute, element } from "@surface/htmlx-element";
+import template                             from "./index.htmlx";
+import style                                from "./index.scss";
 
-@element("app-icon", template, style)
-export default class Icon extends CustomElement
+@element("app-icon", { template, style })
+export default class Icon extends HTMLXElement
 {
     private _name = "";
 

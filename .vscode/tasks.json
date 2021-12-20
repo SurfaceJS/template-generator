@@ -2,7 +2,7 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-            "command": "tsc",
+            "command": "${workspaceFolder}/node_modules/.bin/tsc.ps1",
             "label": "tsc",
             "options": {
                 "cwd": "${fileDirname}"

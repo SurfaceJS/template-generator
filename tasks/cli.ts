@@ -7,6 +7,5 @@ program.version("1.0.0");
 
 program
     .command("generate <output>")
-    .action(output => Tasks.generateTemplates(output));
-
-program.parse(process.argv);
+    .action(output => Tasks.generateTemplates(output))
+    .parse(process.argv);

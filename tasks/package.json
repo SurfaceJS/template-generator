@@ -1,16 +1,16 @@
 {
     "author": "HitalloExiled",
     "devDependencies": {
-        "@surface/io": "latest",
+        "@surface/io": "../../workbench/modules/packages/@surface/io",
         "@surface/mock": "../../workbench/modules/packages/@surface/mock",
         "@surface/mock-loader": "../../workbench/modules/packages/@surface/mock-loader",
         "@surface/test-suite": "../../workbench/modules/packages/@surface/test-suite",
-        "@types/chai": "4.2.15",
-        "@types/node": "14.14.35",
-        "chai": "4.3.4",
-        "chalk": "4.1.0",
-        "commander": "7.1.0",
-        "mocha": "8.3.2"
+        "@types/chai": "^4.2.22",
+        "@types/node": "^16.11.9",
+        "chai": "^4.3.4",
+        "chalk": "^4.1.2",
+        "commander": "^8.3.0",
+        "mocha": "^9.1.3"
     },
     "license": "ISC",
     "main": "index.js",
